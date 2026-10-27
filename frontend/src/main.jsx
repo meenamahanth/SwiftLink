@@ -1,0 +1,31 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { Toaster } from 'react-hot-toast';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <AuthProvider>
+        <App />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: 'var(--glass-bg)',
+              color: 'inherit',
+              border: '1px solid var(--glass-border)',
+              backdropFilter: 'blur(8px)',
+              borderRadius: '12px',
+              fontSize: '14px',
+            },
+            duration: 3500,
+          }}
+        />
+      </AuthProvider>
+    </ThemeProvider>
+  </React.StrictMode>,
+);
